@@ -7,6 +7,7 @@ F:\C # PROGRAM\2019\.NET CORE\EmployeeManagement\EmployeeManagement\bin\Release\
 F:\C # PROGRAM\2019\.NET CORE\EmployeeManagement\EmployeeManagement\bin\Release\netcoreapp2.1\EmployeeManagement.pdb
 F:\C # PROGRAM\2019\.NET CORE\EmployeeManagement\EmployeeManagement\bin\Release\netcoreapp2.1\EmployeeManagement.Views.dll
 F:\C # PROGRAM\2019\.NET CORE\EmployeeManagement\EmployeeManagement\bin\Release\netcoreapp2.1\EmployeeManagement.Views.pdb
+F:\C # PROGRAM\2019\.NET CORE\EmployeeManagement\EmployeeManagement\obj\Release\netcoreapp2.1\EmployeeManagement.csprojAssemblyReference.cache
 F:\C # PROGRAM\2019\.NET CORE\EmployeeManagement\EmployeeManagement\obj\Release\netcoreapp2.1\EmployeeManagement.AssemblyInfoInputs.cache
 F:\C # PROGRAM\2019\.NET CORE\EmployeeManagement\EmployeeManagement\obj\Release\netcoreapp2.1\EmployeeManagement.AssemblyInfo.cs
 F:\C # PROGRAM\2019\.NET CORE\EmployeeManagement\EmployeeManagement\obj\Release\netcoreapp2.1\EmployeeManagement.csproj.CoreCompileInputs.cache

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+using EmployeeManagement.Utilities;
 
 namespace EmployeeManagement.ViewModels
 {
@@ -10,6 +12,8 @@ namespace EmployeeManagement.ViewModels
     {
         [Required]
         [EmailAddress]
+        [Remote(action:"IsEmailInUse",controller:"Account")]
+        [ValidEmailDomain(allowedDomain:"pragimtech.com",ErrorMessage ="Email domain must be pragimtech.com")]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
@@ -18,6 +22,7 @@ namespace EmployeeManagement.ViewModels
         [Display(Name ="Confirm password")]
         [Compare("Password",ErrorMessage ="Password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public  string City { get; set; }
 
     }
 }

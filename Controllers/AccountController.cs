@@ -1,4 +1,5 @@
-﻿using EmployeeManagement.ViewModels;
+﻿using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +12,9 @@ namespace EmployeeManagement.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> userManger;
-        private readonly SignInManager<IdentityUser> signInManager;
-        public AccountController(UserManager<IdentityUser> userManager,SignInManager<IdentityUser> signInManager)
+        private readonly UserManager<ApplicationUser> userManger;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        public AccountController(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager)
         {
             this.userManger = userManager;
             this.signInManager = signInManager;
@@ -30,10 +31,11 @@ namespace EmployeeManagement.Controllers
         {
             if(ModelState.IsValid)
             {
-                var user = new IdentityUser
+                var user = new ApplicationUser
                 {
                     UserName = model.Email,
-                    Email = model.Email
+                    Email = model.Email,
+                    City=model.City
                 };
                 var result = await userManger.CreateAsync(user, model.Password);
                 if(result.Succeeded)
@@ -62,7 +64,7 @@ namespace EmployeeManagement.Controllers
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model,string returnUrl)
-        {
+         {
             if (ModelState.IsValid)
             {
 
@@ -82,6 +84,20 @@ namespace EmployeeManagement.Controllers
                     ModelState.AddModelError(string.Empty,"Invalid Login Attempt");
             }
             return View(model);
+        }
+        [AcceptVerbs("Get","Post")]
+        [AllowAnonymous]
+        public async Task <IActionResult> IsEmailInUse(string email)
+        {
+            var user = await userManger.FindByEmailAsync(email);
+            if (user == null) 
+            {
+                return Json(true);
+            }
+            else 
+            {
+                return Json($"Email {email} is already in use.");
+            }
         }
 
     }
